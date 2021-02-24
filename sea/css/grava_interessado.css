@@ -1,0 +1,10 @@
+.banner-grava_interessado{
+    min-height: 100vh;
+    background: url('../imagens/background-interessado.jpg');
+    background-repeat: no-repeat; 
+    background-image: linear-gradient(to bottom, #e4f1fe, #c5eff7, #89c4f4);
+}
+
+h1{
+    padding-top: 385px;
+}

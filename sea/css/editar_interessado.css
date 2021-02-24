@@ -1,0 +1,27 @@
+header a{
+    color: black;
+}
+
+header a:hover{
+    color: #a7a7a7;
+}
+
+.banner-gravar {
+    min-height: 100vh;
+    background-image: linear-gradient(to left, #89c4f4, #81cfe0, #6bb9f0);
+    background-repeat: no-repeat;
+}
+
+form span {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+form .btn {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+form .btn:hover {
+    color: #a7a7a7;
+}

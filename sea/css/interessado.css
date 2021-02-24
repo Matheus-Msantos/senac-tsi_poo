@@ -1,0 +1,39 @@
+/* ----- Banner ----- */
+.banner-interessado {
+    min-height: calc(100vh - 75px);
+    background: url('../imagens/background-interessado.jpg');
+    background-repeat: no-repeat; 
+    background-image: linear-gradient(to bottom, #e4f1fe, #c5eff7, #89c4f4);
+    
+}
+
+/* ----- Tabela ----- */
+table{
+    width:100%;
+}
+
+table th{
+    font-size: 18px;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid ;
+}
+
+table td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid ;
+}
+
+table td a {
+
+    color:#013243;
+}
+
+.icon-apagar:hover{
+    color: red;
+}
+
+.icon-editar:hover{
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,26 @@
+.banner-login{
+    min-height: 100vh;
+    background: url('../imagens/fantastic-seascape-with-ripples.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.input-group{
+    padding-top: 10px;
+}
+
+.input-group i{
+    margin-right: 10px;
+}
+
+.input-group input{
+    border-radius: 5px;
+   
+}
+
+.icon{
+    margin-left: 160px;
+    height: 75px;
+    
+}
