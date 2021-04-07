@@ -2,7 +2,7 @@
 
 interface  iNba{
     public function setNome(string $nome);
-    public function showNome();
+    public function getNome();
     
 }
 
@@ -15,7 +15,7 @@ class Nba implements iNba{
         return true;
     }
 
-    public function  showNome(): string{
+    public function  getNome(): string{
         return $this->nome;
     }
 
@@ -47,7 +47,7 @@ $titulo->setNome('Clippers');
 
 $celtics = new maiorTitulo($titulo);
 
-echo 'O ' . $titulo->showNome() . ' não tem troféu';
+echo 'O ' . $titulo->getNome() . ' não tem troféu';
 
 unset($celtics);
 
