@@ -7,28 +7,42 @@ require('class/movimentacao.class.php');
 
 class Main {
 
-    public function __construct() {
-        echo "\n --- Iniciando programa --- \n";
-        $objUsuario = new Usuario;
-        $objFabricante = new Fabricante;
-        $objEstoque = new Estoque;
-        $objMovimentacao = new Movimentacao;
+    private $objUsuario;
+    private $objFabricante;
+    private $objEstoque;
+    private $objMovimentacao;
 
-        switch($_SERVER['argv'][1]) { //pega o segundo argumento passado pelo usuario via linha de comando
+    public function __construct() {
+        $this->verificaArg(1);
+
+        echo "\n --- Iniciando programa --- \n";
+        $this->objUsuario = new Usuario;
+        $this->objFabricante = new Fabricante;
+        $this->objEstoque = new Estoque;
+        $this->objMovimentacao = new Movimentacao;
+
+        $this->executaOperacao($_SERVER['argv'][1]);
+    }
+    
+    private function executaOperacao(string $operacao) {
+        switch($operacao) { //pega o segundo argumento passado pelo usuario via linha de comando
             case'saveUsuario':
-                
-                $this->saveUsuario($objUsuario);
+                return $this->saveUsuario();
                 break;
             case'editUsuario':
                 
-                $this->editUsuario($objUsuario);
+                return $this->editUsuario();
+                break;
+            case 'listUsuario':
+                return $this->listUsuario();
                 break;
             default:
                 echo "\n Não existe a funcionalidade {$_SERVER['argv'][1]} \n";
         }
     }
 
-    public function trataDados() {
+    private function trataDados() {
+        $this->verificaArg(2);
         $args = explode(',', $_SERVER['argv'][2]); //dados passado pelo usuario
 
         foreach ($args as $valor) {
@@ -41,25 +55,51 @@ class Main {
         return $dados;
     }
 
-    public function saveUsuario($objUsuario) {
+    private function listUsuario(){
+        $lista = $this->objUsuario->getAll();
+
+        foreach($lista as $usuario) {
+            echo "\n{$usuario['id']} \t {$usuario['nome']} \t {$usuario['cpf']}\n";
+        }
+    }
+
+    private function saveUsuario() {
 
         $dados = $this->trataDados();
 
-        $objUsuario->setDados($dados);
-        if($objUsuario->saveDados()) {
+        $this->objUsuario->setDados($dados);
+        if($this->objUsuario->saveDados()) {
             sleep(1);
             echo "\n --- Usuário gravado --- \n";
         }
     }
 
-    public function editUsuario($objUsuario) {
+    private function editUsuario() {
 
         $dados = $this->trataDados();
 
-        $objUsuario->setDados($dados);
-        if($objUsuario->saveDados()) {
+        $this->objUsuario->setDados($dados);
+        if($this->objUsuario->saveDados()) {
             sleep(1);
             echo "\n --- Usuário editado --- \n";
+        }
+    }
+
+    private function deleteUsuario(){
+        $dados = $this->trataDados();
+
+        $this->objUsuario->setDados($dados);
+
+        if($this->objUsuario->delete()) {
+            echo "\n\n Usuário apagado com sucesso! \n\n";
+        }
+    }
+
+    private function verificaArg(int $num) {
+        if(!isset($_SERVER['argv'][$num])){
+            echo"\n\n Erro: para utilizar o programa digite: php nome_do_arquivo operação dado=valor ...\n\n";
+
+            exit();
         }
     }
 
